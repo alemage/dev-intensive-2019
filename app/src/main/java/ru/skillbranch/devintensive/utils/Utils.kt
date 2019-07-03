@@ -1,6 +1,6 @@
 package ru.skillbranch.devintensive.utils
 
-import ru.skillbranch.devintensive.extentions.trimStartEnd
+import ru.skillbranch.devintensive.extensions.trimStartEnd
 
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?>{

@@ -1,4 +1,4 @@
-package ru.skillbranch.devintensive.extentions
+package ru.skillbranch.devintensive.extensions
 
 import ru.skillbranch.devintensive.models.TimeConstants
 import ru.skillbranch.devintensive.models.TimeUnits

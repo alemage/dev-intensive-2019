@@ -1,3 +1,3 @@
-package ru.skillbranch.devintensive.extentions
+package ru.skillbranch.devintensive.extensions
 
 fun String?.trimStartEnd(): String? = this?.trimStart()?.trimEnd()
