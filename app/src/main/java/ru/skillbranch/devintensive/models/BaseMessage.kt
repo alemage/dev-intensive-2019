@@ -14,12 +14,14 @@ abstract class BaseMessage(
     companion object AbstractFactory{
         var lastId = -1;
         fun makeMessage(
-            from:User, chat:Chat, date:Date, type:MessageType, payload:String?, isIncoming: Boolean = false
+            from:User, chat:Chat, date:Date, type:String = "text", payload:Any? = null, isIncoming: Boolean = false
         ):BaseMessage{
             lastId++
-            return when(type){
-                MessageType.Text -> TextMessage(lastId.toString(),from ,chat,isIncoming,date,payload)
-                MessageType.Image -> ImageMessage(lastId.toString(),from ,chat,isIncoming,date,payload)
+            return when(type.toLowerCase()){
+                MessageType.Text -> TextMessage(lastId.toString(),from ,chat,isIncoming,date,payload?.toString())
+                MessageType.Image -> ImageMessage(lastId.toString(),from ,chat,isIncoming,date,payload?.toString())
+                else -> throw Exception("wrong message format")
+
             }
         }
     }

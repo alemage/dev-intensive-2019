@@ -1,6 +1,6 @@
 package ru.skillbranch.devintensive.models
 
-enum class MessageType {
-    Text,
-    Image
+object MessageType {
+    const val Text = "text";
+    const val Image = "image";
 }
