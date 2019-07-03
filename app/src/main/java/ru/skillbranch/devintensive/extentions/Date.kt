@@ -7,7 +7,7 @@ import java.util.*
 
 
 
-fun Date.format(pattern: String? = "HH:mm:ss dd.MM.yy"):String{
+fun Date.format(pattern: String = "HH:mm:ss dd.MM.yy"):String{
     val simpleDateFormat = SimpleDateFormat(pattern, Locale("ru"))
     return simpleDateFormat.format(this)
 }
@@ -25,5 +25,5 @@ fun Date.add(value: Int, unit: TimeUnits = TimeUnits.SECOND): Date{
 }
 
 fun Date.humanizeDiff(date:Date? = Date()): String{
-    return "";
+    return ""
 }
