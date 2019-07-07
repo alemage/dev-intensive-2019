@@ -15,8 +15,13 @@ data class User(val id : String,
     companion object {
         var id = -1
         fun makeUser(fullName: String?): User{
-            val (firstName, lastName) = Utils.parseFullName(fullName);
+            val (firstName, lastName) = Utils.parseFullName(fullName)
             return User((id++).toString(),firstName, lastName, null)
         }
+
+        fun Builder() : PreCreatedUser {
+            return PreCreatedUser()
+        }
     }
+
 }

@@ -23,7 +23,7 @@ object Utils {
     }
 
     fun transliteration(payload:String, divider:String = " "):String{
-        var res = "";
+        var res = ""
         for (ch in payload){
             if ((ch in 'a'..'z') || (ch in 'A'..'Z')){
                 res+=ch
@@ -31,7 +31,7 @@ object Utils {
             else{
                 val chInLow = ch.toLowerCase()
                 if (chInLow in TranslateMap.transcriptions){
-                    var transStr = TranslateMap.transcriptions[chInLow]
+                    val transStr = TranslateMap.transcriptions[chInLow]
                     if (ch.isUpperCase() && !transStr.isNullOrEmpty()){
                         res+=transStr[0].toUpperCase()
                         res+=transStr.drop(1)
@@ -49,14 +49,24 @@ object Utils {
     }
 
     fun toInitials(firstName:String?, lastName:String?) : String?{
-        val firstNameTrim = firstName.trimStartEnd()
-        val lastNameTrim = lastName.trimStartEnd()
+        var res = ""
+        val firstNameSymbol = getFirstSymbolOrNull(firstName)
+        if (firstNameSymbol != null){
+            res+=firstNameSymbol
+        }
+        val lastNameSymbol = getFirstSymbolOrNull(lastName)
+        if (lastNameSymbol != null){
+            res+=lastNameSymbol
+        }
+        return if (res.isEmpty()) null else res
+    }
 
-        if (firstNameTrim.isNullOrEmpty()) return null
-        val first = firstNameTrim.first().toUpperCase().toString()
-        if (lastNameTrim.isNullOrEmpty()) return first
-        val second = lastNameTrim.first().toUpperCase().toString()
-        return "$first$second"
+    private fun getFirstSymbolOrNull(src: String?):Char?{
+        val srcTrim = src.trimStartEnd()
+        if (srcTrim.isNullOrEmpty()){
+            return null
+        }
+        return srcTrim.first().toUpperCase()
     }
 
 
