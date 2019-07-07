@@ -3,10 +3,10 @@ package ru.skillbranch.devintensive.extensions
 fun String?.trimStartEnd(): String? = this?.trimStart()?.trimEnd()
 
 fun String.truncate(length: Int = 16):String{
-    val trimString = this.trimEnd()
-    if (trimString.length <= length) return trimString
+    val trimString = this.trimStartEnd() ?: ""
+    if (trimString.length <= length+1) return trimString
 
-    val thisFirstSymbols = trimString.substring(0,length-1)
+    val thisFirstSymbols = trimString.substring(0,length+1)
     return "${thisFirstSymbols.trimEnd()}..."
 }
 
